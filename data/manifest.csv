@@ -1,0 +1,12 @@
+doc_id,source_url,downloaded_at,sha256,size_bytes,content_type,status,error
+cfr-part11,https://www.ecfr.gov/api/versioner/v1/full/2026-10-23/title-21.xml?part=11,2026-11-07T21:39:08Z,7fff122daf0a667920b359ce857373b6cf503e36c5b6d96b5537bac925ae9197,20474,application/xml; charset=utf-8,ok,
+cfr-part820,https://www.ecfr.gov/api/versioner/v1/full/2026-10-23/title-21.xml?part=820,2026-11-07T21:39:09Z,246db2cfb6e5a04b9920263fa77389ef88166b15316fb98c8b9628f1e78bb1aa,21545,application/xml; charset=utf-8,ok,
+guid-part11-scope,https://www.fda.gov/media/75414/download,2026-11-07T21:24:44Z,306013031df65004566799023444b3fd66d17dca72eea4c7eb5bacfd4a697ac5,44957,application/pdf,skipped,already exists (use --force to re-download)
+guid-clinical-esig-qa,https://www.fda.gov/media/166215/download,2026-11-07T21:24:47Z,f74ce1b061edfa634aaf0a0b07a472995a6d215f310a562e17ae46c0b67b47a6,558773,application/pdf,skipped,already exists (use --force to re-download)
+guid-gpsv,https://www.fda.gov/media/73141/download,2026-11-07T21:24:49Z,eae6bc54bdc03fe470c29ef08ecfb4621ac3fb63042f7457b148efd03e003418,245530,application/pdf,skipped,already exists (use --force to re-download)
+guid-csa,https://www.fda.gov/media/188844/download,2026-11-07T21:24:53Z,11e2e21f5eb226b56a578da44e732965a2318e9b983422c6a58e51bc7b2e223a,752262,application/pdf,skipped,already exists (use --force to re-download)
+guid-premarket-software,https://www.fda.gov/media/153781/download,2026-11-07T21:25:00Z,dee0c15e11499682ca281120a9828180ec16710eea3d9e272cee5807050a704a,1542867,application/pdf,skipped,already exists (use --force to re-download)
+guid-cybersecurity,https://www.fda.gov/media/119933/download,2026-11-07T21:25:06Z,d046fa836048933e1a8795bcf2f8224bcfa08789c2f3ef6f46ae53c2eb096c54,1195625,application/pdf,skipped,already exists (use --force to re-download)
+guid-cds,https://www.fda.gov/media/109618/download,2026-11-07T21:25:09Z,156bdc583aa71b6997ba327d8d97ade09fd1f76c5999a1214cdbe7c3e03d1eef,738146,application/pdf,skipped,already exists (use --force to re-download)
+guid-pccp-ai,https://www.fda.gov/media/166704/download,2026-11-07T21:25:12Z,80f0f423efe0c8104460a9064615a2093e9a620deae013db670792c7f599e4d9,666195,application/pdf,skipped,already exists (use --force to re-download)
+guid-ai-lifecycle-draft,https://www.fda.gov/media/184856/download,2026-11-07T21:25:20Z,62e83e0f4cbd36aed96f2f98ced597f3146f25ae66abba9849325e4e4b7520bc,1590866,application/pdf,skipped,already exists (use --force to re-download)
