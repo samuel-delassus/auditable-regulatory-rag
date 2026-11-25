@@ -57,3 +57,46 @@ One entry per work session.
 **Next**
 - Extract the 9 PDF guidance documents into the same JSONL format.
 - Verify the reference questions in `eval/reference_part11.csv`.
+
+
+## 2026-11-23 to 2026-11-25 — PDF extraction and checks
+
+**Done**
+- Extracted the 9 PDF guidance documents into the same JSONL format as
+  the regulations (`scripts/extract_pdf.py`): 310 sections in total
+  for the 11 documents, with page numbers.
+- Manual spot checks: PCCP section III (footnotes, page break) and CSA
+  Table 1 (section V.A(6), pp. 20-24).
+- Added `scripts/check_extraction.py`: checks all 11 documents (schema,
+  unique section IDs, no empty section, source hash, text coverage).
+- Added `scripts/show_sections.py` to inspect the output.
+- Renamed `extract.py` to `extract_cfr.py`.
+
+**Decisions**
+- pdfplumber (MIT license) rather than PyMuPDF (AGPL).
+- Page numbers = physical PDF pages, as shown in a PDF viewer.
+- Footnotes kept at the end of the section that cites them.
+- Long sections kept whole: splitting belongs to the chunking step.
+- Duplicate section numbers in a PDF get a unique ID (e.g. GPSV 2.4(2)).
+- Line-end hyphens: join without a space ("AI-DSF"), except suspended
+  hyphens ("pre- and post-market"). In-line spaces kept as printed.
+- The checker excludes repeated table header rows; the count is reported
+  and matches the extractor's own count.
+
+**Problems**
+- The coverage check proves no text is lost, not that it is well placed
+  or clean: manual spot checks are still needed.
+- Manual checks found two general defects the checker cannot see:
+  table headers repeated on each page, and a space after line-end
+  hyphens ("AI- DSF"). Both fixed in the extraction (16 repeated
+  header rows dropped, 43 hyphen joins).
+
+**Working with AI assistants**
+- Claude Code wrote the PDF extraction and the checker from my spec and
+  tested the checker on deliberately corrupted data; I reviewed the plan,
+  made the design choices and spot-checked the output.
+
+**Next**
+- Chunking, embeddings and storage in PostgreSQL + pgvector.
+- Evaluation idea: the PCCP guidance (2024) says the QMSR "will take
+  effect" in 2026, now outdated: test that answers rely on the regulation.

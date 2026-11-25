@@ -27,6 +27,17 @@ def table_to_text(table: ET.Element) -> str:
     return "\n".join(lines)
 
 
+def check_unique_ids(doc_id: str, sections: list[dict]) -> None:
+    """Stop with an error if two sections of a document share a section_id."""
+    seen: dict[str, str] = {}
+    for s in sections:
+        if s["section_id"] in seen:
+            raise SystemExit(
+                f"ERROR {doc_id}: duplicate section_id {s['section_id']!r} "
+                f"({seen[s['section_id']]!r} and {s['title']!r}); nothing written for this document")
+        seen[s["section_id"]] = s["title"]
+
+
 def load_manifest(path: Path) -> dict[str, dict]:
     """Read manifest.csv into {doc_id: row}."""
     with path.open(newline="", encoding="utf-8") as f:
@@ -85,6 +96,8 @@ def extract_cfr(doc_id: str, xml_path: Path, source_sha256: str) -> tuple[list[d
                 "citation": citation,
                 "char_count": len(text),
                 "source_sha256": source_sha256,
+                "page_start": None,  # no pages in eCFR XML; keeps one schema with PDFs
+                "page_end": None,
             })
 
     if not sections:
@@ -106,6 +119,7 @@ def main() -> None:
             continue
 
         sections, reserved = extract_cfr(doc_id, RAW_DIR / f"{doc_id}.xml", entry["sha256"])
+        check_unique_ids(doc_id, sections)
 
         out_path = OUT_DIR / f"{doc_id}.jsonl"
         with out_path.open("w", encoding="utf-8") as f:
